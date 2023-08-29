@@ -1,32 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { registerUser } from "./actions/authActions";
+import { API } from "../../consts";
 
-const initialState = {
-  loading: false,
-  userInfo: {},
-  userToken: null,
-  error: null,
-  success: false,
-};
+export const registerUser = createAsyncThunk(
+  "auth/registerUser",
+  async (userData) => {
+    const response = await axios.post(`${API}/account/register/`, userData);
+    return response.data;
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
-  initialState,
-  reducers: {},
-  extraReducers: {
-    [registerUser.pending]: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    [registerUser.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.success = true; // registration successful
-    },
-    [registerUser.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
-    },
+  initialState: {
+    user: null,
+    status: "idle",
+    error: null,
+  },
+  reducers: (builder) => {
+    builder
+      .addCase(registerUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 

@@ -10,7 +10,10 @@ function SendBio() {
           Для подробной информации заполните анкету
         </p>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group
+          className="mb-3"
+          // controlId="exampleForm.ControlInput1"
+        >
           <Form.Label>Имя</Form.Label>
           <Form.Control type="text" placeholder="Асанов" />
           <Form.Label>Имя</Form.Label>

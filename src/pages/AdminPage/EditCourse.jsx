@@ -35,19 +35,23 @@ const EditCourse = ({
       <input
         type="text"
         value={editedTitle}
+        placeholder="title"
         onChange={(e) => setEditedTitle(e.target.value)}
       />
       <input
         type="number"
+        placeholder="duration"
         value={editedDuration}
         onChange={(e) => setEditedDuration(e.target.value)}
       />
       <input
+        placeholder="Lecture_count"
         type="number"
         value={editedLecture_count}
         onChange={(e) => setEditedLecture_count(e.target.value)}
       />
       <input
+        placeholder="direction"
         type="number"
         value={editedDirection}
         onChange={(e) => setEditedDirection(e.target.value)}

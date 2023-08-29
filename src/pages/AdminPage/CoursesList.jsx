@@ -5,7 +5,7 @@ import EditCourse from "./EditCourse";
 
 const CoursesList = () => {
   const dispatch = useDispatch();
-  const courses = useSelector((state) => state.courses.data.results);
+  const courses = useSelector((state) => state.courses.data);
   console.log(courses);
 
   useEffect(() => {
@@ -38,12 +38,15 @@ const CoursesList = () => {
                   courseId={course.id}
                   initialTitle={course.title}
                   initialDuration={course.duration}
+                  initialLecture_count={course.lecture_count}
+                  initialDirection={course.direction}
                   onSave={handleCancelEditCourse}
                   onCancel={handleCancelEditCourse}
                 />
               ) : (
                 <>
                   {course.title} ({course.duration} часов)
+                  {course.lecture_count} {course.direction}
                   <button onClick={() => handleEditCourse(course.id)}>
                     Редактировать
                   </button>

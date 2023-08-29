@@ -9,7 +9,7 @@ const AddCourse = () => {
     title: "",
     duration: null,
     lecture_count: null,
-    direction: null,
+    direction: "",
   });
 
   const handleSubmit = (e) => {
@@ -29,7 +29,7 @@ const AddCourse = () => {
         />
 
         <input
-          type="num"
+          type="number"
           placeholder="Продолжительность курса"
           value={courseData.duration}
           onChange={(e) =>
@@ -45,7 +45,7 @@ const AddCourse = () => {
           }
         />
         <input
-          type="number"
+          type="text"
           placeholder="Направление"
           value={courseData.direction}
           onChange={(e) =>

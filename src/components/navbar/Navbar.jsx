@@ -63,7 +63,7 @@ function OffcanvasExample() {
                   <Button variant="warning">Записаться</Button>
                   <img
                     src={logo}
-                    class="rounded-circle"
+                    className="rounded-circle"
                     style={{
                       width: "40px",
                       height: "40px",

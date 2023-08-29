@@ -27,7 +27,7 @@ function ScheduleItem() {
     }, []);
     return size;
   }
-  console.log(useWindowSize()[0]);
+  // console.log(useWindowSize()[0]);
   return (
     <>
       {useWindowSize() > 990 ? (
